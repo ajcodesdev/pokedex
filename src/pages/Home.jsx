@@ -18,30 +18,52 @@ const Home = () => {
   }
 
   function handlePreviousPage() {
-    const newOffSet = offSet <= 50 ? 0 : offSet - 50;
+    // const newOffSet = offSet <= 50 ? 0 : offSet - 50;
+    const newOffSet = Math.max(0, offSet - 50); 
     setOffSet(newOffSet);
     sessionStorage.setItem("offset", newOffSet.toString());
   }
 
   useEffect(() => {
+    let isMounted = true;
+
     async function fetchPokemon() {
-      const apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=50&offset=${offSet}`;
+      setLoading(true);
+      
+      try {
+        const apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=50&offset=${offSet}`;
+        
+        const res = await fetch(apiUrl);
 
-      const res = await fetch(apiUrl);
-      const data = await res.json();
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
 
-      setPokemons(data.results);
-      setTimeout(() => {
-        setLoading(false);
-      }, 500);
+        const data = await res.json();
+        
+        if(isMounted){
+          setPokemons(data.results);
+        }
+        setTimeout(() => {
+          setLoading(false);
+        }, 500);
+      } 
+      catch (error) {
+        console.error("Failed to fetch pokemons:", error);
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+
     }
     fetchPokemon();
-  }, [offSet]);
 
-  useEffect(() => {
-    setLoading(true);
+    // cleanup
+    return () => {
+      isMounted = false;
+    };
   }, [offSet]);
-
+    
   return (
     <div className="Home maxWidth">
       {loading && <LoadingScreen />}
