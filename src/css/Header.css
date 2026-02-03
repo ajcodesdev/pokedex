@@ -32,3 +32,31 @@ header nav img {
   padding: 10px;
 }
 
+/* Logout Button Styling */
+header button {
+  padding: 8px 16px;
+  background-color: #667eea;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+header button:hover {
+  background-color: #764ba2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+header button:active {
+  transform: translateY(0);
+}
+
+header button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

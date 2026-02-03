@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
 import Button from "./Button";
+import LogoutButton from "./LogoutButton";
 import "../css/Header.css";
 import { Link } from "react-router-dom";
 
@@ -17,10 +18,11 @@ const Header = () => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <Link to={`/${query}`}>
+          <Link to={`/home/${query}`}>
             <Button label={"Search"} />
           </Link>
         </div>
+        <LogoutButton />
       </nav>
     </header>
   );
