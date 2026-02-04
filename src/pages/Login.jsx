@@ -72,50 +72,53 @@ const Login = () => {
 
   return (
     <div className="auth-container">
-      <div className="auth-card">
-        <h1 className="auth-title">Login</h1>
-
+      <form onSubmit={handleLogin} className="form">
+        <div className="form-title"><span>sign in to your</span></div>
+        <div className="title-2"><span>POKÉDEX</span></div>
+        
         {error && <div className="auth-error">{error}</div>}
+        
+        <div className="input-container">
+          <input 
+            placeholder="Email" 
+            type="email" 
+            className="input-mail"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            disabled={loading}
+          />
+          <span> </span>
+        </div>
 
-        <form onSubmit={handleLogin} className="auth-form">
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email"
-              disabled={loading}
-            />
-          </div>
+        <section className="bg-stars">
+          <span className="star"></span>
+          <span className="star"></span>
+          <span className="star"></span>
+          <span className="star"></span>
+        </section>
 
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Enter your password"
-              disabled={loading}
-            />
-          </div>
+        <div className="input-container">
+          <input 
+            placeholder="Password" 
+            type="password" 
+            className="input-pwd"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            disabled={loading}
+          />
+        </div>
+        
+        <button className="submit" type="submit" disabled={loading}>
+          <span className="sign-text">{loading ? "Logging in..." : "Sign in"}</span>
+        </button>
 
-          <button type="submit" className="auth-button" disabled={loading}>
-            {loading ? "Logging in..." : "Login"}
-          </button>
-        </form>
-
-        <p className="auth-footer">
-          Don't have an account?{" "}
-          <Link to="/register" className="auth-link">
-            Sign up here
-          </Link>
+        <p className="signup-link">
+          No account?
+          <Link to="/register" className="up">Sign up!</Link>
         </p>
-      </div>
+      </form>
     </div>
   );
 };
