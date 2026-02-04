@@ -136,81 +136,93 @@ const Register = () => {
 
         <form onSubmit={handleRegister} className="auth-form">
           <div className="form-group">
-            <label htmlFor="fullName">Full Name</label>
-            <input
-              type="text"
-              id="fullName"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              placeholder="John Doe"
-              disabled={loading}
-            />
+            <div className="floating-label">
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleChange}
+                className="line-input"
+                disabled={loading}
+              />
+              <label htmlFor="fullName" className={formData.fullName ? 'focused' : ''}>Full Name</label>
+            </div>
           </div>
 
           <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              placeholder="johndoe"
-              disabled={loading}
-            />
+            <div className="floating-label">
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                className="line-input"
+                disabled={loading}
+              />
+              <label htmlFor="username" className={formData.username ? 'focused' : ''}>Username</label>
+            </div>
           </div>
 
           <div className="form-group">
-            <label htmlFor="phone">Phone Number (Optional)</label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="+1 (555) 123-4567"
-              disabled={loading}
-            />
+            <div className="floating-label">
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className="line-input"
+                disabled={loading}
+              />
+              <label htmlFor="phone" className={formData.phone ? 'focused' : ''}>Phone Number (Optional)</label>
+            </div>
           </div>
 
           <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="john@example.com"
-              disabled={loading}
-            />
+            <div className="floating-label">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="line-input"
+                disabled={loading}
+              />
+              <label htmlFor="email" className={formData.email ? 'focused' : ''}>Email</label>
+            </div>
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="At least 6 characters"
-              disabled={loading}
-            />
+            <div className="floating-label">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                className="line-input"
+                disabled={loading}
+              />
+              <label htmlFor="password" className={formData.password ? 'focused' : ''}>Password</label>
+            </div>
           </div>
 
           <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              placeholder="Confirm your password"
-              disabled={loading}
-            />
+            <div className="floating-label">
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                className="line-input"
+                disabled={loading}
+              />
+              <label htmlFor="confirmPassword" className={formData.confirmPassword ? 'focused' : ''}>Confirm Password</label>
+            </div>
           </div>
 
           <button type="submit" className="auth-button" disabled={loading}>
