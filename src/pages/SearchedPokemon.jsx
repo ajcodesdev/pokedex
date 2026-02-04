@@ -86,7 +86,7 @@ const SearchedPokemon = () => {
   return (
     <div className="searched-pokemon maxWidth">
       <div className="searched-pokemon_header">
-        <Link to={"/"}>
+        <Link to={"/home"}>
           <Button label="Back" />
         </Link>
       </div>
